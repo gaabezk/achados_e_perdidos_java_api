@@ -10,7 +10,7 @@ public class CityModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "uf")
     private String uf;

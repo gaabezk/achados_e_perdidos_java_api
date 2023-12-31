@@ -1,4 +1,4 @@
-package com.gabezk.achados_e_perdidosapi.Controllers;
+package com.gabezk.achados_e_perdidosapi.controllers;
 
 import com.gabezk.achados_e_perdidosapi.exceptions.ErrorResponse;
 import com.gabezk.achados_e_perdidosapi.exceptions.ErrorException;

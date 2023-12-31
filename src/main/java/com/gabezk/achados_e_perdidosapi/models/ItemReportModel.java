@@ -1,7 +1,7 @@
 package com.gabezk.achados_e_perdidosapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.gabezk.achados_e_perdidosapi.Enuns.ItemTypeEnum;
+import com.gabezk.achados_e_perdidosapi.enums.ItemTypeEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 

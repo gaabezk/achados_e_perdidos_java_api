@@ -1,6 +1,6 @@
 package com.gabezk.achados_e_perdidosapi.models;
 
-import com.gabezk.achados_e_perdidosapi.Enuns.PostStatusEnum;
+import com.gabezk.achados_e_perdidosapi.enums.PostStatusEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 

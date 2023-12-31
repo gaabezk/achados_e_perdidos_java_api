@@ -1,4 +1,4 @@
-package com.gabezk.achados_e_perdidosapi.Enuns;
+package com.gabezk.achados_e_perdidosapi.enums;
 
 public enum PostStatusEnum {
 
