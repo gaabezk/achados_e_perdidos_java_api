@@ -1,6 +1,5 @@
-package com.gabezk.achados_e_perdidosapi.models;
+package com.gabezk.achados_e_perdidos_java_api.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -12,9 +11,9 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "TB_CATEGORIA")
 @Data
-public class CategoryModel implements Serializable {
+@Table(name = "TB_USUARIO")
+public class UserModel implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -23,11 +22,14 @@ public class CategoryModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "nome")
-    private String name;
+    @Column(name = "nome_completo")
+    private String fullName;
 
-    @Column(name = "descricao")
-    private String description;
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "telefone")
+    private String phone;
 
     @Column(name = "data_cadastro")
     private Date registrationDate;
@@ -35,7 +37,6 @@ public class CategoryModel implements Serializable {
     @Column(name = "data_atualizacao")
     private Date updateDate;
 
-    @ManyToMany(mappedBy = "categories")
-    @JsonIgnore
-    private Set<PostItemReportModel> items = new HashSet<>();
+    @OneToMany(mappedBy = "user")
+    private Set<ItemReportPostModel> itemReports = new HashSet<>();
 }

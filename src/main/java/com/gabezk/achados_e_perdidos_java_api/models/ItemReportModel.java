@@ -1,7 +1,7 @@
-package com.gabezk.achados_e_perdidosapi.models;
+package com.gabezk.achados_e_perdidos_java_api.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.gabezk.achados_e_perdidosapi.enums.ItemTypeEnum;
+import com.gabezk.achados_e_perdidos_java_api.enums.ItemTypeEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -36,7 +36,7 @@ public class ItemReportModel implements Serializable {
     @OneToOne
     @JoinColumn(name = "postagem_id")
     @JsonIgnore
-    private PostItemReportModel post;
+    private ItemReportPostModel post;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo")

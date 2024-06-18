@@ -1,6 +1,6 @@
-package com.gabezk.achados_e_perdidosapi.models;
+package com.gabezk.achados_e_perdidos_java_api.models;
 
-import com.gabezk.achados_e_perdidosapi.enums.PostStatusEnum;
+import com.gabezk.achados_e_perdidos_java_api.enums.PostStatusEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,7 +11,7 @@ import java.util.*;
 @Entity
 @Table(name = "TB_POSTAGEM")
 @Data
-public class PostItemReportModel implements Serializable {
+public class ItemReportPostModel implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;

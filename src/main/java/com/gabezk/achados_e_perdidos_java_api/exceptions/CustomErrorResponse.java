@@ -1,4 +1,4 @@
-package com.gabezk.achados_e_perdidosapi.exceptions;
+package com.gabezk.achados_e_perdidos_java_api.exceptions;
 
 import lombok.*;
 
@@ -6,7 +6,7 @@ import java.time.ZonedDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErrorResponse {
+public class CustomErrorResponse {
 
     private ZonedDateTime timestamp;
     private Integer status;

@@ -1,7 +1,8 @@
-package com.gabezk.achados_e_perdidosapi.controllers;
+package com.gabezk.achados_e_perdidos_java_api.controllers;
 
-import com.gabezk.achados_e_perdidosapi.exceptions.ErrorResponse;
-import com.gabezk.achados_e_perdidosapi.exceptions.ErrorException;
+
+import com.gabezk.achados_e_perdidos_java_api.exceptions.CustomErrorResponse;
+import com.gabezk.achados_e_perdidos_java_api.exceptions.CustomErrorException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,41 +15,41 @@ import java.time.ZonedDateTime;
 
 @RestControllerAdvice
 public class ExceptionController {
-    @ExceptionHandler(ErrorException.class)
-    public ResponseEntity<ErrorResponse> GeneralException(ErrorException e, HttpServletRequest request){
+    @ExceptionHandler(CustomErrorException.class)
+    public ResponseEntity<CustomErrorResponse> GeneralException(CustomErrorException e, HttpServletRequest request){
         HttpStatus status = HttpStatus.BAD_REQUEST;
-        ErrorResponse errorResponse = new ErrorResponse(
+        CustomErrorResponse customErrorResponse = new CustomErrorResponse(
                 ZonedDateTime.now(),
                 status.value(),
                 status.toString(),
                 e.getMessage(),
                 request.getRequestURI()
         );
-        return ResponseEntity.status(status).body(errorResponse);
+        return ResponseEntity.status(status).body(customErrorResponse);
     }
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
-    public ResponseEntity<ErrorResponse> GeneralException(SQLIntegrityConstraintViolationException e, HttpServletRequest request) {
+    public ResponseEntity<CustomErrorResponse> GeneralException(SQLIntegrityConstraintViolationException e, HttpServletRequest request) {
         HttpStatus status = HttpStatus.NOT_FOUND;
-        ErrorResponse errorResponse = new ErrorResponse(
+        CustomErrorResponse customErrorResponse = new CustomErrorResponse(
                 ZonedDateTime.now(),
                 status.value(),
                 status.toString(),
                 e.getMessage(),
                 request.getRequestURI()
         );
-        return ResponseEntity.status(status).body(errorResponse);
+        return ResponseEntity.status(status).body(customErrorResponse);
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
-    public ResponseEntity<ErrorResponse> GeneralException(MethodArgumentNotValidException e, HttpServletRequest request) {
+    public ResponseEntity<CustomErrorResponse> GeneralException(MethodArgumentNotValidException e, HttpServletRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
-        ErrorResponse errorResponse = new ErrorResponse(
+        CustomErrorResponse customErrorResponse = new CustomErrorResponse(
                 ZonedDateTime.now(),
                 status.value(),
                 status.toString(),
                 (e.getFieldError().getField() + " " + e.getFieldError().getDefaultMessage()),
                 request.getRequestURI()
         );
-        return ResponseEntity.status(status).body(errorResponse);
+        return ResponseEntity.status(status).body(customErrorResponse);
     }
 }

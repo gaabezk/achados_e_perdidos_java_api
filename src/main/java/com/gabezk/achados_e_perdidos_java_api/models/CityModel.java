@@ -1,4 +1,4 @@
-package com.gabezk.achados_e_perdidosapi.models;
+package com.gabezk.achados_e_perdidos_java_api.models;
 
 import jakarta.persistence.*;
 import lombok.Data;

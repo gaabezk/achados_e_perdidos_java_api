@@ -1,4 +1,4 @@
-package com.gabezk.achados_e_perdidosapi.models;
+package com.gabezk.achados_e_perdidos_java_api.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -25,7 +25,6 @@ public class ImageModel implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "item_id")
-
     @JsonIgnore
     private ItemReportModel item;
 }
