@@ -22,7 +22,7 @@ public class ExceptionController {
                 ZonedDateTime.now(),
                 status.value(),
                 status.toString(),
-                e.getMessage(),
+                e.toString(),
                 request.getRequestURI()
         );
         return ResponseEntity.status(status).body(customErrorResponse);

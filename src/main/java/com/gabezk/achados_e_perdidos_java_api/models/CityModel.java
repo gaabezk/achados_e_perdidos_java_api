@@ -17,4 +17,12 @@ public class CityModel {
 
     @Column(name = "nome")
     private String name;
+
+    public CityModel(Integer id) {
+        this.id = id;
+    }
+
+    public CityModel() {
+
+    }
 }

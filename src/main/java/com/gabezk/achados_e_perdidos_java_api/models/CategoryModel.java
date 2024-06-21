@@ -1,14 +1,10 @@
 package com.gabezk.achados_e_perdidos_java_api.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -34,8 +30,4 @@ public class CategoryModel implements Serializable {
 
     @Column(name = "data_atualizacao")
     private Date updateDate;
-
-    @ManyToMany(mappedBy = "categories")
-    @JsonIgnore
-    private Set<ItemReportPostModel> items = new HashSet<>();
 }

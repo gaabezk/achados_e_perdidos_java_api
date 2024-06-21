@@ -3,6 +3,7 @@ package com.gabezk.achados_e_perdidos_java_api.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "TB_IMAGEM")
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ImageModel implements Serializable {
 
     @Serial
@@ -18,6 +20,7 @@ public class ImageModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @EqualsAndHashCode.Include
     private UUID id;
 
     @Column(name = "url")
@@ -26,5 +29,5 @@ public class ImageModel implements Serializable {
     @ManyToOne
     @JoinColumn(name = "item_id")
     @JsonIgnore
-    private ItemReportModel item;
+    private ItemModel item;
 }
