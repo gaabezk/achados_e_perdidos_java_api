@@ -36,10 +36,10 @@ public class ItemService {
         var itemReport = new ItemModel();
         itemReport.setTitle(request.getItemTitle());
         itemReport.setDescription(request.getItemDescription());
-        itemReport.setTitle(request.getPostTitle()); // Usando o nome como título da postagem
+        itemReport.setTitle(request.getPostTitle());
         itemReport.setDescription(request.getPostDescription());
-        itemReport.setRegistrationDate(OffsetDateTime.now(ZoneOffset.UTC));
-        itemReport.setUpdateDate(OffsetDateTime.now(ZoneOffset.UTC));
+        itemReport.setDate(OffsetDateTime.now(ZoneOffset.UTC));
+
         itemReport = itemRepository.save(itemReport);
 
         var imagesList = new ArrayList<ImageModel>();
