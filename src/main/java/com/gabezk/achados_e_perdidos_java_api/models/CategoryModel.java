@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.UUID;
 
@@ -26,8 +28,21 @@ public class CategoryModel implements Serializable {
     private String description;
 
     @Column(name = "data_cadastro")
-    private Date registrationDate;
+    private OffsetDateTime registrationDate = OffsetDateTime.now(ZoneOffset.UTC);
 
     @Column(name = "data_atualizacao")
-    private Date updateDate;
+    private OffsetDateTime updateDate = OffsetDateTime.now(ZoneOffset.UTC);
+
+    public CategoryModel(UUID id) {
+        this.id = id;
+    }
+
+    public CategoryModel(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public CategoryModel() {
+
+    }
 }

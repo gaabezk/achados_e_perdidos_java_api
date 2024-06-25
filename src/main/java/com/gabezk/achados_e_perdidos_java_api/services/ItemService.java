@@ -1,6 +1,8 @@
 package com.gabezk.achados_e_perdidos_java_api.services;
 
+import com.gabezk.achados_e_perdidos_java_api.enums.ItemTypeEnum;
 import com.gabezk.achados_e_perdidos_java_api.exceptions.CustomErrorException;
+import com.gabezk.achados_e_perdidos_java_api.models.CategoryModel;
 import com.gabezk.achados_e_perdidos_java_api.models.ImageModel;
 import com.gabezk.achados_e_perdidos_java_api.models.ItemModel;
 import com.gabezk.achados_e_perdidos_java_api.repositories.ImageRepository;
@@ -34,11 +36,17 @@ public class ItemService {
     @Transactional(rollbackFor = CustomErrorException.class)
     public ItemModel postItem(ItemRequest request) {
         var itemReport = new ItemModel();
-        itemReport.setTitle(request.getItemTitle());
-        itemReport.setDescription(request.getItemDescription());
-        itemReport.setTitle(request.getPostTitle());
-        itemReport.setDescription(request.getPostDescription());
+        itemReport.setTitle(request.getTitle());
+        itemReport.setDescription(request.getDescription());
         itemReport.setDate(OffsetDateTime.now(ZoneOffset.UTC));
+        itemReport.setItemType(request.itemType);
+        itemReport.setLocation(request.location);
+        itemReport.getCity().setId(request.cityId);
+        Set<CategoryModel> categorySet = new HashSet<>();
+        for (UUID categoryId : request.getCategoriesId()) {
+            categorySet.add(new CategoryModel(categoryId));
+        }
+        itemReport.setCategories(categorySet);
 
         itemReport = itemRepository.save(itemReport);
 
